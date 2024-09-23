@@ -13,16 +13,22 @@ const db = knex({
         connectionString: process.env.DATABASE_URL,
         ssl:{rejectUnauthorized: false},
         host : process.env.DATABASE_HOST,
-        // port : 5432,
+        port : 5432,
         user : process.env.DATABASE_USER,
         password : process.env.DATABASE_PW,
         database : process.env.DATABASE_DB
   }
 })
 
+const corsOptions = {
+    origin: 'https://delivery-shop-csys.onrender.com/',//(https://your-client-app.com)
+    optionsSuccessStatus: 200,
+};
+ 
 const app = express();
 app.use(express.json()); //middleware to parse JSON format of the frontend, from latest versions built-in the express library, no need to import bodyParser library
-app.use(cors());
+// app.use(cors());
+app.use(cors(corsOptions));
 
 //Getting list fo available shops from DB
 app.get('/shops',(req,res) => { handleShopsList(req, res, db)})
