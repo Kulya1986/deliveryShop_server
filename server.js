@@ -21,7 +21,7 @@ const db = knex({
 })
 
 const corsOptions = {
-    origin: 'https://delivery-shop-csys.onrender.com/',//(https://your-client-app.com)
+    origin: 'https://delivery-shop-csys.onrender.com',//(https://your-client-app.com)
     optionsSuccessStatus: 200,
 };
  
